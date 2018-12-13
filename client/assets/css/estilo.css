@@ -59,6 +59,9 @@
 .card-expirado{
   background-color: rgb(230, 86, 86);
 }
+.card-expirado:hover{
+  background-color: rgb(194, 60, 60);
+}
 .card-realizado{
   background-color: greenyellow;
 }
