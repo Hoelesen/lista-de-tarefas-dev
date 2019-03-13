@@ -123,11 +123,12 @@ exports.inserir = (req, res) => {
   const tarefa = {};
   tarefa.descricao = req.body.descricao;
   tarefa.data = req.body.data;
+  tarefa.observacao = req.body.observacao;
   tarefa.realizado = req.body.realizado;
 
-  const query = 'insert into tarefas (descricao, data, realizado) values (?, ?, ?)';
+  const query = 'insert into tarefas (descricao, data, observacao, realizado) values (?, ?, ?, ?)';
 
-  conexao.query(query, [tarefa.descricao, tarefa.data, tarefa.realizado], (err, rows) => {
+  conexao.query(query, [tarefa.descricao, tarefa.data, tarefa.observacao, tarefa.realizado], (err, rows) => {
     if (err) {
       res.status(500);
       res.json({
@@ -148,10 +149,11 @@ exports.alterar = (req, res) => {
   tarefa.id = req.params.id;
   tarefa.descricao = req.body.descricao;
   tarefa.data = req.body.data;
+  tarefa.observacao = req.body.observacao;
   tarefa.realizado = req.body.realizado || false;
 
-  const query = 'update tarefas set descricao = ?, data = ?, realizado = ? where id = ?';
-  conexao.query(query, [tarefa.descricao, tarefa.data, tarefa.realizado, tarefa.id], (err, rows) => {
+  const query = 'update tarefas set descricao = ?, data = ?, observacao = ?, realizado = ? where id = ?';
+  conexao.query(query, [tarefa.descricao, tarefa.data,tarefa.observacao, tarefa.realizado, tarefa.id], (err, rows) => {
     if (err) {
       res.status(500);
       res.json({
